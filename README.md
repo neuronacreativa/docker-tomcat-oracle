@@ -1,20 +1,21 @@
+# Docker-tomcat-oracle
+Docker compose for Tomcat 8.5 + Oracle 11g environment
+
 ## ORACLE
 
-### Seteo de password SYSTEM para ORACLE
+### Setting password for SYSTEM user
 ```
 docker container exec -it oracle-local /bin/bash
-./setpassword.sh contrasenia
+./setpassword.sh password
 ```
 
-### Creación de esquema BLOG para ORACLE
+### Schema creation
 ```
-CREATE USER BLOG IDENTIFIED BY contrasenia;
+CREATE USER BLOG IDENTIFIED BY password;
 
-GRANTALL PRIVILEGES TO BLOG;
+GRANTALL PRIVILEGES TO NEW_SCHEMA;
 
-GRANT EXECUTE ANY PROCEDURE TO BLOG;
-GRANT UNLIMITED TABLESPACE TO BLOG;
+GRANT EXECUTE ANY PROCEDURE TO NEW_SCHEMA;
+GRANT UNLIMITED TABLESPACE TO NEW_SCHEMA;
 ```
 ---
-
-## TOMCAT
