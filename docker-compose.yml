@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  tomcat-local:
+    container_name: 'tomcat-local'
+    build: docker/tomcat
+    volumes:
+      - ./docker/tomcat/app/logs/:/usr/local/tomcat/logs/
+      #- ./.docker/tomcat/app/webapps/:/usr/local/tomcat/webapps/
+      #- ./.docker/tomcat/app/conf/:/usr/local/tomcat/conf/
+    ports:
+      - 80:8080
+    tty: true
+  oracle-local:
+    container_name: 'oracle-local'
+    build: docker/oracle/install
+    shm_size: '2gb'
+    ports:
+      - 1521:1521
+      - 8081:8081
